@@ -19,7 +19,7 @@
 		var canvas = document.getElementById("uwu");
 		canvas.setAttribute("width", ""+width);
 		canvas.setAttribute("height", ""+height);
-		canvas.setAttribute("onclick", "c.fillStyle='#ffffff';c.fillRect(0,0,"+width+", "+height+");mode++;mode=mode>2?0:mode;");
+		canvas.setAttribute("onclick", "c.fillStyle='#ffffff';c.fillRect(0,0,width,height);mode++;mode=mode>2?0:mode;");
 		var c = canvas.getContext("2d");
 		c.textAlign = "center";
 		var mainRainbow = c.createLinearGradient(0, 0, width, 0);
