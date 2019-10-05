@@ -11,9 +11,9 @@
 	<body>
 		<canvas id="uwu" onclick="c.fillStyle='#ffffff';c.fillRect(0,0,width,height);mode++;mode=mode>2?0:mode;"></canvas>
 	</body>
-	<script id="hi" type="text" src="https://raw.githubusercontent.com/rickroller314/uwu/master/index.html"></script>
+	<script id="hi" type="text" src="https://raw.githubusercontent.com/rickroller314/uwu/master/index.html">var x = "oof uwu";</script>
 	<script>
-		alert(document.getElementById("hi"));
+		alert(document.getElementById("hi").innerHTML);
 		alert("start!");
 		var mode = 0;
 		var width = window.innerWidth;
