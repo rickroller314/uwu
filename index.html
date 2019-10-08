@@ -15,6 +15,7 @@
 	<script>
 		//alert(document.getElementById("hi").innerHTML);
 		alert("start!");
+		var rainbow;
 		var mode = 0;
 		var width = window.innerWidth;
 		var height = window.innerHeight;
@@ -37,7 +38,7 @@
 			}
 			var x = Math.random()*width;
 			var y = Math.random()*height;
-			var rainbow = c.createLinearGradient(x-pSize,y,x+pSize,y);
+			rainbow = c.createLinearGradient(x-pSize,y,x+pSize,y);
 			switch(mode){
 				case 0:
 					c.fillStyle="#000000";
@@ -46,18 +47,21 @@
 					c.fillStyle = mainRainbow;
 					break;
 				case 2:
-					rainbow.addColorStop(0,"#f00");
-					rainbow.addColorStop(0.2,"#f80");
-					rainbow.addColorStop(0.4,"#ff0");
-					rainbow.addColorStop(0.6,"#0f0");
-					rainbow.addColorStop(0.8,"#00f");
-					rainbow.addColorStop(1,"#f0f");
-					c.fillStyle = rainbow;
+					setRainbow();
 					break;
 			}
 			c.font = pSize+"px Cursive";
 			var text=Math.random()<0.5?"UwU":"OwO";
 			c.fillText(text, x, y);
 		}, 10);
+		function setRainbow(){
+			rainbow.addColorStop(0,"#f00");
+			rainbow.addColorStop(0.2,"#f80");
+			rainbow.addColorStop(0.4,"#ff0");
+			rainbow.addColorStop(0.6,"#0f0");
+			rainbow.addColorStop(0.8,"#00f");
+			rainbow.addColorStop(1,"#f0f");
+			c.fillStyle = rainbow;
+		}
 	</script>
 </html>
