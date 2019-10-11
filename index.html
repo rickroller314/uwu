@@ -13,12 +13,10 @@
 	</body>
 	<script>
 		alert("start!");
-		var rainbow;
 		var width = window.innerWidth;
 		var height = window.innerHeight;
 		var canvas = document.getElementById("uwu");
 		var c = canvas.getContext("2d");
-		var mainRainbow = c.createLinearGradient(0, 0, width, 0);
 		var mode = 0;
 		flagCount = 2;
 		var flag = 0;
@@ -33,10 +31,9 @@
 			var x = Math.random()*width;
 			var y = Math.random()*height;
 			if(mode){
-				setRainbow(mainRainbow);
+				setRainbow(c.createLinearGradient(0, 0, width, 0));
 			}else{
-				rainbow = c.createLinearGradient(x-pSize,y,x+pSize,y);
-				setRainbow(rainbow);
+				setRainbow(c.createLinearGradient(x-pSize,y,x+pSize,y));
 			}
 			c.font = pSize+"px Cursive";
 			var text=Math.random()<0.5?"UwU":"OwO";
