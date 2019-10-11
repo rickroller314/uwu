@@ -8,27 +8,22 @@
 			}
 		</style>
 	</head>
-	<body>
-		<canvas id="uwu" onclick="c.fillStyle='#ffffff';c.fillRect(0,0,width,height);mode++;mode=mode>2?0:mode;"></canvas>
+	<body onkeydown = "keyPressed(event);">
+		<canvas id="uwu" onclick="c.fillStyle='#ffffff';c.fillRect(0,0,width,height);mode=!mode;"></canvas>
 	</body>
 	<script>
-		alert("strt!");
+		alert("start!");
 		var rainbow;
-		var mode = 0;
 		var width = window.innerWidth;
 		var height = window.innerHeight;
 		var canvas = document.getElementById("uwu");
+		var c = canvas.getContext("2d");
+		var mainRainbow = c.createLinearGradient(0, 0, width, 0);
+		var mode = 0;
+		var flag = 0;
 		canvas.setAttribute("width", ""+width);
 		canvas.setAttribute("height", ""+height);
-		var c = canvas.getContext("2d");
 		c.textAlign = "center";
-		var mainRainbow = c.createLinearGradient(0, 0, width, 0);
-		mainRainbow.addColorStop(0,"#f00");
-		mainRainbow.addColorStop(0.2,"#f80");
-		mainRainbow.addColorStop(0.4,"#ff0");
-		mainRainbow.addColorStop(0.6,"#0f0");
-		mainRainbow.addColorStop(0.8,"#00f");
-		mainRainbow.addColorStop(1,"#f0f");
 		setInterval(function(){
 			var pSize = Math.round(Math.random()*width/2);
 			for(var smol = 4; smol > 0; smol--){
@@ -36,17 +31,11 @@
 			}
 			var x = Math.random()*width;
 			var y = Math.random()*height;
-			switch(mode){
-				case 0:
-					c.fillStyle="#000000";
-					break;
-				case 1:
-					c.fillStyle = mainRainbow;
-					break;
-				case 2:
-					rainbow = c.createLinearGradient(x-pSize,y,x+pSize,y);
-					setRainbow(rainbow);
-					break;
+			if(mode){
+				setRainbow(mainRainbow);
+			}else{
+				rainbow = c.createLinearGradient(x-pSize,y,x+pSize,y);
+				setRainbow(rainbow);
 			}
 			c.font = pSize+"px Cursive";
 			var text=Math.random()<0.5?"UwU":"OwO";
@@ -60,6 +49,10 @@
 			name.addColorStop(0.8,"#00f");
 			name.addColorStop(1,"#f0f");
 			c.fillStyle = name;
+		}
+		function keyPressed(event){
+			flag+=flags.length+1;
+			flag%=flags.length;
 		}
 	</script>
 </html>
