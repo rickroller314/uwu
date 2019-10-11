@@ -20,6 +20,7 @@
 		var c = canvas.getContext("2d");
 		var mainRainbow = c.createLinearGradient(0, 0, width, 0);
 		var mode = 0;
+		flagCount = 2;
 		var flag = 0;
 		canvas.setAttribute("width", ""+width);
 		canvas.setAttribute("height", ""+height);
@@ -42,17 +43,25 @@
 			c.fillText(text, x, y);
 		}, 10);
 		function setRainbow(name){
-			name.addColorStop(0,"#f00");
-			name.addColorStop(0.2,"#f80");
-			name.addColorStop(0.4,"#ff0");
-			name.addColorStop(0.6,"#0f0");
-			name.addColorStop(0.8,"#00f");
-			name.addColorStop(1,"#f0f");
+			switch(flag){
+				case 0:
+					name.addColorStop(0,"#f00");
+					name.addColorStop(0.2,"#f80");
+					name.addColorStop(0.4,"#ff0");
+					name.addColorStop(0.6,"#0f0");
+					name.addColorStop(0.8,"#00f");
+					name.addColorStop(1,"#f0f");
+				break;
+				case 1:
+					name.addColorStop(0,"#f8f");
+					name.addColorStop(1,"#00f");
+				break;
+			}
 			c.fillStyle = name;
 		}
 		function keyPressed(event){
-			flag+=flags.length+1;
-			flag%=flags.length;
+			flag+=flagCount+1;
+			flag%=flagCount;
 		}
 	</script>
 </html>
