@@ -17,9 +17,21 @@
 		var height = window.innerHeight;
 		var canvas = document.getElementById("uwu");
 		var c = canvas.getContext("2d");
-		var mode = 0;
-		flagCount = 2;
+		var mode = false;
 		var flag = 0;
+		var flags = [
+			["red", "orange", "yellow", "green", "blue", "purple"],
+			["#f44", "blue"],
+			["#f88", "yellow", "blue"],
+			["blue", "pink", "white", "pink", "blue"],
+			[],//(can't figure out the colors for this one)
+			["black", "grey", "white", "purple"],
+			["magenta", "green", "blue"],
+			["white", "purple", "grey"],
+			["purple", "white", "green"],
+			["yellow", "white", "purple", "black"],
+			["pink", "white", "purple", "black", "blue"]
+		];
 		canvas.setAttribute("width", ""+width);
 		canvas.setAttribute("height", ""+height);
 		c.textAlign = "center";
@@ -40,27 +52,16 @@
 			c.fillText(text, x, y);
 		}, 10);
 		function setRainbow(name){
-			switch(flag){
-				case 0:
-					name.addColorStop(0,"#f00");
-					name.addColorStop(0.2,"#f80");
-					name.addColorStop(0.4,"#ff0");
-					name.addColorStop(0.6,"#0f0");
-					name.addColorStop(0.8,"#00f");
-					name.addColorStop(1,"#f0f");
-				break;
-				case 1:
-					name.addColorStop(0,"#f00");
-					name.addColorStop(1,"#00f");
-				break;
+			for(var colorCounter = 0; colorCounter < flags[flag].length; colorCounter++){
+				name.addColorStop(colorCounter/(flags[flag].length-1),flags[flag][colorCounter]);
 			}
 			c.fillStyle = name;
 		}
 		function keyPressed(event){
 			c.fillStyle='#ffffff';
 			c.fillRect(0,0,width,height);
-			flag+=flagCount+1;
-			flag%=flagCount;
+			flag+=flags.length+1;
+			flag%=flags.length;
 		}
 	</script>
 </html>
